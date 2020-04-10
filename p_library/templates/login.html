@@ -1,0 +1,13 @@
+{% extends 'pl_base.html' %}
+
+{% block extra_header %}
+    - вход.
+{% endblock extra_header %}
+
+{% block main_content %}    
+    <form method="post">  
+        {% csrf_token %}  
+        {{ form.as_ul }}  
+        <input type="submit" value="Войти">  
+    </form>   
+{% endblock main_content %}

@@ -1,0 +1,15 @@
+{% extends 'pl_base.html' %}
+
+{% block extra_header %}
+    - список друзей.
+{% endblock extra_header %}
+
+{% block main_content %}  
+
+	<ul class="list-group md-auto">
+		{% for friend in object_list %}
+		    <li class="list-group-item colbg">{{ friend.name }}</li>
+		{% endfor %}
+	</ul>
+
+{% endblock main_content %}  

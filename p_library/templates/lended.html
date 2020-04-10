@@ -1,0 +1,30 @@
+{% extends 'pl_base.html' %}
+
+{% block extra_header %}
+    - одолженные книги.
+{% endblock extra_header %}
+
+{% block main_content %} 
+
+    <table border="1">
+        <tr>
+            <td></td>
+            <td>Обложка</td>
+            <td>Название</td>
+            <td>Кому одолжена</td>            
+        </tr>
+        {% for book in lends %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>
+                    {% if book.cover %}
+                        <img src="{{ book.cover.url }}" height="90" width="60">
+                    {% endif %}
+                </td>
+                <td>{{ book.title }}</td>
+                <td>{{ book.lendedto }}</td>            
+            </tr>		
+        {% endfor %}	
+    </table>
+
+{% endblock main_content %} 

@@ -1,0 +1,15 @@
+{% extends 'pl_base.html' %}
+
+{% block extra_header %}
+    - создание друга.
+{% endblock extra_header %}
+
+{% block main_content %} 
+
+<form method="post">  
+	{% csrf_token %}  
+	{{ form.as_p }}  
+	<input type="submit" value="Сохранить" class="btn btn-info btn-sm btn-block">  
+</form>  
+
+{% endblock main_content %} 

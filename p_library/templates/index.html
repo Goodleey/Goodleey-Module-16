@@ -1,0 +1,45 @@
+{% extends 'pl_base.html' %}
+
+{% block extra_header %}
+    - список книг.
+{% endblock extra_header %}
+
+{% block main_content %}    
+
+<div class="wrapperin">
+    Добро пожаловать в мою библиотеку. <br>
+    Тут собрано {{ books|length }} книг из моей личной коллекции.
+
+    <table border="1">
+        {% for book in books %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>
+                {% if book.cover %}
+                    <img src="{{ book.cover.url }}" height="90" width="60">
+                {% endif %}
+            </td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.ISBN }}</td>
+            <td>{{ book.description }}</td>
+            <td>{{ book.year_release }}</td>
+            <td>{{ book.author.full_name }}</td>
+            <td>{{ book.author.country }}</td>
+            <td>{{ book.copy_count }}</td>
+            <td>
+                <form action="/index/book_increment/" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{book.id}}" />
+                    <input type="submit" value="Увеличить кол-во" class="btn btn-info btn-sm btn-block mb-1" />
+                </form>
+                <form action="/index/book_decrement/" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{book.id}}" />
+                    <input type="submit" value="Уменьшить кол-во" class="btn btn-info btn-sm btn-block" />
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock main_content %}

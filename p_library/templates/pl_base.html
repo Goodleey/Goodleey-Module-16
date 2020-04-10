@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+{% load static %}
+{% load socialaccount %}
+<head>
+    <meta charset="utf-8">
+    <title>Личная библиотека.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">    
+</head>
+
+<body>
+    <header>
+        <div class="wrapperout">
+            <div class="wrapperheader">
+                <h1>Сайт личной библиотеки{% block extra_header %}{% endblock extra_header %}</h1>
+                {% if username %}
+                <p>Привет, {{ username }} с адресом {% if provider == "local" %} {{ provider }} {% else %} {{ github_url }} {% endif %} в возрасте {{ age }}</p>
+                {% else %}
+                <p>Тебе нужно <a href="register/">зарегистрироваться</a> или <a href="login/">войти на сайт</a>!</p>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="wrapperout">
+            {% block main_content %}
+            {% endblock main_content %}
+        </div>
+    </main>
+    <footer>
+        <div class="wrapperout">       
+            <div class="wrapperin footer">
+                <a href="/" class="btn btn-primary btn-sm btn-block">Меню</a>
+                {% if username %}
+                <a href="/profile-create/" class="btn btn-primary btn-sm btn-block">Заполнение профиля</a>
+                <a href="/logout/" class="btn btn-primary btn-sm btn-block">Выйти</a>
+                {% endif %}
+            </div>
+        </div>
+    </footer>
+</body>

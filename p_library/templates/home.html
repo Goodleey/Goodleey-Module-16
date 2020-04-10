@@ -1,0 +1,24 @@
+{% extends 'pl_base.html' %}
+
+{% block extra_header %}
+    - меню.
+{% endblock extra_header %}
+
+{% block main_content %}    
+{% if username %}
+    <div class="wrapperin">            
+        <a href="index/" class="btn btn-primary btn-sm btn-block">Индекс</a>            
+        <a href="pubs/" class="btn btn-primary btn-sm btn-block">Издательства</a>            
+        <a href="p_library/authors" class="btn btn-primary btn-sm btn-block">Авторы</a>            
+        <a href="p_library/author/create" class="btn btn-primary btn-sm btn-block">Создание автора</a>                    
+        <a href="p_library/friends" class="btn btn-primary btn-sm btn-block">Друзья</a>            
+        <a href="p_library/friend/create" class="btn btn-primary btn-sm btn-block">Создание друга</a>            
+        <a href="p_library/lended" class="btn btn-primary btn-sm btn-block">Одолженные книги</a>            
+        <a href="p_library/lend_return" class="btn btn-primary btn-sm btn-block">Одолжить или вернуть книгу</a>            
+    </div>    
+{% else %}
+<div class="wrapperin">            
+    <a href="login/" class="btn btn-primary btn-sm btn-block">Вход</a>    
+</div>   
+{% endif %}
+{% endblock main_content %}

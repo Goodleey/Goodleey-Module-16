@@ -1,0 +1,15 @@
+{% extends 'pl_base.html' %}
+
+{% block extra_header %}
+    - список авторов.
+{% endblock extra_header %}
+
+{% block main_content %}    
+
+	<ul class="list-group md-auto">
+		{% for author in object_list %}
+		    <li class="list-group-item colbg">{{ author.full_name }}</li>
+		{% endfor %}
+	</ul>
+
+{% endblock main_content %}    

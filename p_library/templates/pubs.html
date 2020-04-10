@@ -1,0 +1,24 @@
+{% extends 'pl_base.html' %}
+
+{% block extra_header %}
+    - список издательств и их книг.
+{% endblock extra_header %}
+
+{% block main_content %} 
+
+<div class="container d-flex flex-column justify-content-between">
+    <div class="flex-md-equal mt-5">
+        {% for pub in pubs %}
+            <div class="mb-5">
+                <p class="h4">Книги издательства "{{pub.name}}":</p>
+                <ul class="list-group md-auto">
+                {% for book in pub.book_set.all %}
+                    <li class="list-group-item colbg">{{book.title}}</li>
+                {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock main_content %} 
